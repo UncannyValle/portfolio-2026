@@ -4,6 +4,10 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
+  --font-body: var(--font-dm-sans), sans-serif;
+  --font-display: var(--font-outfit), sans-serif;
+  --font-mono: var(--font-jetbrains-mono), monospace;
+
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
@@ -68,6 +72,9 @@
 }
 
 :root {
+  --font-outfit: "Outfit";
+  --font-dm-sans: "DM Sans";
+  --font-jetbrains-mono: "JetBrains Mono";
   color-scheme: dark;
   --background: #0f0f14;
   --foreground: #fafaf9;

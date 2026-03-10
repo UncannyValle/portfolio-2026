@@ -1,4 +1,5 @@
 export interface Project {
+  slug: string;
   title: string;
   subtitle: string;
   description: string;
@@ -6,6 +7,27 @@ export interface Project {
   color: string;
   accent: string;
   href?: string;
+}
+
+export interface ProjectPostFrontmatter {
+  title: string;
+  subtitle: string;
+  description: string;
+  publishedAt: string;
+  tags: string[];
+  color: string;
+  accent: string;
+  heroImage?: string;
+  heroAlt?: string;
+}
+
+export interface ProjectPostSummary extends ProjectPostFrontmatter {
+  slug: string;
+  readingTimeMinutes: number;
+}
+
+export interface ProjectPost extends ProjectPostSummary {
+  content: string;
 }
 
 export interface Skill {

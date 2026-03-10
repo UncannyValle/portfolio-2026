@@ -1,36 +1,61 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Julian Valle Portfolio 2026
 
-## Getting Started
+Next.js 16 personal portfolio with a one page home experience plus markdown driven project case study pages at `/posts/[slug]`.
 
-First, run the development server:
+## Stack
+
+1. Next.js 16 App Router with Cache Components enabled
+2. React 19 and TypeScript
+3. Tailwind CSS v4 and shadcn/ui
+4. Biome for linting and formatting
+5. Markdown content parsing with `gray-matter` and `react-markdown`
+
+## Local Development
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
+pnpm install
 pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Quality Checks
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+pnpm lint
+pnpm check
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Project Case Studies
 
-## Learn More
+Project cards on the home page are generated from markdown files in `content/posts`. Each file maps to one dynamic route:
 
-To learn more about Next.js, take a look at the following resources:
+```txt
+content/posts/infotrack.md -> /posts/infotrack
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Required Frontmatter
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```yaml
+title: Project Title
+subtitle: Product Area
+description: One sentence summary used on cards and page intro
+publishedAt: "2026-01-15"
+tags:
+  - React
+  - TypeScript
+color: "#2563eb"
+accent: "#60a5fa"
+```
 
-## Deploy on Vercel
+Optional fields:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+1. `heroImage` as a public path, example `/projects/infotrack/hero.webp`
+2. `heroAlt` for image accessibility
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### Add a New Case Study
+
+1. Copy `content/postTemplate.md`
+2. Save it as `content/posts/<slug>.md` using lowercase letters and dashes only
+3. Fill frontmatter and markdown body content
+4. Start the app and open `/posts/<slug>`
+
+The home projects grid and static route generation update automatically based on files in `content/posts`.

@@ -5,9 +5,12 @@ import { Hero } from "@/components/sections/Hero";
 import { Projects } from "@/components/sections/Projects";
 import { Skills } from "@/components/sections/Skills";
 import { Separator } from "@/components/ui/Separator";
-import { CAREERS, PROJECTS, SKILLS } from "@/lib/data";
+import { CAREERS, SKILLS } from "@/lib/data";
+import { getProjectCards } from "@/lib/posts";
 
-export default function Home() {
+export default async function Home() {
+  const projects = await getProjectCards();
+
   return (
     <main>
       <Hero />
@@ -16,7 +19,7 @@ export default function Home() {
       <Separator className="mx-auto w-[min(92%,72rem)]" />
       <Skills skills={SKILLS} />
       <Separator className="mx-auto w-[min(92%,72rem)]" />
-      <Projects projects={PROJECTS} />
+      <Projects projects={projects} />
       <Separator className="mx-auto w-[min(92%,72rem)]" />
       <Experience careers={CAREERS} />
       <Separator className="mx-auto w-[min(92%,72rem)]" />
