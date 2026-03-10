@@ -2,10 +2,10 @@
 
 import { useMemo, useState } from "react";
 
-import { SectionHeader } from "@/components/section-header";
-import { Card, CardContent } from "@/components/ui/card";
-import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { useInView } from "@/hooks/use-in-view";
+import { SectionHeader } from "@/components/SectionHeader";
+import { Card, CardContent } from "@/components/ui/Card";
+import { Tabs, TabsList, TabsTrigger } from "@/components/ui/Tabs";
+import { useInView } from "@/hooks/useInView";
 import { cn } from "@/lib/utils";
 import type { Skill } from "@/types";
 

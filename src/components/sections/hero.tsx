@@ -2,8 +2,8 @@
 
 import { useEffect, useState } from "react";
 
-import { ScrollIndicator } from "@/components/scroll-indicator";
-import { Button } from "@/components/ui/button";
+import { ScrollIndicator } from "@/components/ScrollIndicator";
+import { Button } from "@/components/ui/Button";
 import { CONTACT_EMAIL, SOCIAL_LINKS } from "@/lib/constants";
 import { cn } from "@/lib/utils";
 

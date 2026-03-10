@@ -1,6 +1,6 @@
 "use client";
 
-import { useInView } from "@/hooks/use-in-view";
+import { useInView } from "@/hooks/useInView";
 import { cn } from "@/lib/utils";
 
 interface SectionHeaderProps {

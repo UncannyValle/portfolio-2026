@@ -1,10 +1,10 @@
-import { About } from "@/components/sections/about";
-import { Contact } from "@/components/sections/contact";
-import { Experience } from "@/components/sections/experience";
-import { Hero } from "@/components/sections/hero";
-import { Projects } from "@/components/sections/projects";
-import { Skills } from "@/components/sections/skills";
-import { Separator } from "@/components/ui/separator";
+import { About } from "@/components/sections/About";
+import { Contact } from "@/components/sections/Contact";
+import { Experience } from "@/components/sections/Experience";
+import { Hero } from "@/components/sections/Hero";
+import { Projects } from "@/components/sections/Projects";
+import { Skills } from "@/components/sections/Skills";
+import { Separator } from "@/components/ui/Separator";
 import { CAREERS, PROJECTS, SKILLS } from "@/lib/data";
 
 export default function Home() {

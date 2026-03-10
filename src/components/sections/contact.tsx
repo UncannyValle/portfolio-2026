@@ -1,9 +1,9 @@
 "use client";
 
-import { SectionHeader } from "@/components/section-header";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
-import { useInView } from "@/hooks/use-in-view";
+import { SectionHeader } from "@/components/SectionHeader";
+import { Button } from "@/components/ui/Button";
+import { Card, CardContent } from "@/components/ui/Card";
+import { useInView } from "@/hooks/useInView";
 import { CONTACT_EMAIL } from "@/lib/constants";
 
 export function Contact() {

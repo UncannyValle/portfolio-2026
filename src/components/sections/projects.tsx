@@ -2,10 +2,10 @@
 
 import { ExternalLink } from "lucide-react";
 
-import { SectionHeader } from "@/components/section-header";
-import { Badge } from "@/components/ui/badge";
-import { Card, CardContent } from "@/components/ui/card";
-import { useInView } from "@/hooks/use-in-view";
+import { SectionHeader } from "@/components/SectionHeader";
+import { Badge } from "@/components/ui/Badge";
+import { Card, CardContent } from "@/components/ui/Card";
+import { useInView } from "@/hooks/useInView";
 import { cn } from "@/lib/utils";
 import type { Project } from "@/types";
 

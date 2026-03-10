@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
 import { DM_Sans, JetBrains_Mono, Outfit } from "next/font/google";
 
-import { Footer } from "@/components/footer";
-import { Nav } from "@/components/nav";
-import { NoiseOverlay } from "@/components/noise-overlay";
+import { Footer } from "@/components/Footer";
+import { Nav } from "@/components/Nav";
+import { NoiseOverlay } from "@/components/NoiseOverlay";
 import { SITE_METADATA } from "@/lib/constants";
-import { ThemeProvider } from "@/providers/theme-provider";
+import { ThemeProvider } from "@/providers/ThemeProvider";
 
 import "@/app/globals.css";
 

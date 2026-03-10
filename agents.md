@@ -348,6 +348,14 @@
                             - Props interfaces should be defined adjacent to the component, not in a separate file, unless shared across multiple components
                             - No barrel exports (`index.ts` re-exporting everything). Import directly from the source file.
                             
+                            ### Files and Folders Naming
+                            
+                            - All folders must use `kebab-case`.
+                            - All non component files must use `camelCase.ts`.
+                            - Component files must use `PascalCase.tsx` and match the component name exactly.
+                            - Hook files must use `camelCase.ts` and always be prefixed with `use` (examples: `useProjects.ts`, `useScrollPosition.ts`).
+                            - Utility and lib files must use `camelCase.ts` and be named after what they do (examples: `getProjects.ts`, `formatDate.ts`).
+                            
                             ## Git Conventions
                             
                             - Commit messages follow Conventional Commits: `feat:`, `fix:`, `refactor:`, `style:`, `chore:`, `docs:`

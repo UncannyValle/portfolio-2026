@@ -5,9 +5,9 @@ import Link from "next/link";
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
 
-import { Button } from "@/components/ui/button";
-import { useActiveSection } from "@/hooks/use-active-section";
-import { useScrolled } from "@/hooks/use-scrolled";
+import { Button } from "@/components/ui/Button";
+import { useActiveSection } from "@/hooks/useActiveSection";
+import { useScrolled } from "@/hooks/useScrolled";
 import { NAV_LINKS } from "@/lib/constants";
 import { cn } from "@/lib/utils";
 

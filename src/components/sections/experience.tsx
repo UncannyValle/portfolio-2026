@@ -1,8 +1,8 @@
 "use client";
 
-import { SectionHeader } from "@/components/section-header";
-import { Card, CardContent } from "@/components/ui/card";
-import { useInView } from "@/hooks/use-in-view";
+import { SectionHeader } from "@/components/SectionHeader";
+import { Card, CardContent } from "@/components/ui/Card";
+import { useInView } from "@/hooks/useInView";
 import type { Career } from "@/types";
 
 interface ExperienceProps {

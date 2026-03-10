@@ -1,9 +1,9 @@
 "use client";
 
-import { SectionHeader } from "@/components/section-header";
-import { Card, CardContent } from "@/components/ui/card";
-import { useCounter } from "@/hooks/use-counter";
-import { useInView } from "@/hooks/use-in-view";
+import { SectionHeader } from "@/components/SectionHeader";
+import { Card, CardContent } from "@/components/ui/Card";
+import { useCounter } from "@/hooks/useCounter";
+import { useInView } from "@/hooks/useInView";
 import { cn } from "@/lib/utils";
 
 export function About() {
