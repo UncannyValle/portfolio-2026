@@ -26,7 +26,7 @@ export function SectionHeader({
         transition: "all 700ms ease",
       }}
     >
-      <p className="font-mono text-xs tracking-[0.28em] text-[var(--accent)] uppercase">
+      <p className="font-mono text-xs tracking-[0.28em] text-accent uppercase">
         Section
       </p>
       <h2 className="font-display text-3xl font-extrabold tracking-tight md:text-4xl">
