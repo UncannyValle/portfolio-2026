@@ -12,8 +12,8 @@ import type {
   ProjectPostSummary,
 } from "@/types";
 
-const POSTS_DIRECTORY = path.join(process.cwd(), "content/posts");
-const POST_EXTENSION = ".md";
+const PROJECTS_DIRECTORY = path.join(process.cwd(), "content/projects");
+const PROJECT_EXTENSION = ".md";
 
 function isObject(value: unknown): value is Record<string, unknown> {
   return typeof value === "object" && value !== null;
@@ -35,7 +35,7 @@ function getTimestamp(value: string): number {
 }
 
 function toSlug(fileName: string): string {
-  return fileName.slice(0, -POST_EXTENSION.length);
+  return fileName.slice(0, -PROJECT_EXTENSION.length);
 }
 
 function estimateReadingTimeMinutes(markdown: string): number {
@@ -68,6 +68,19 @@ function readOptionalStringField(
   }
 
   return value.trim();
+}
+
+function readOptionalStringArrayField(
+  source: Record<string, unknown>,
+  field: "images",
+): string[] | undefined {
+  const value = source[field];
+
+  if (!isStringArray(value) || value.length === 0) {
+    return undefined;
+  }
+
+  return value.map((s) => s.trim()).filter(Boolean);
 }
 
 function readPublishedAtField(
@@ -111,6 +124,7 @@ function parseFrontmatter(
     accent: readStringField(frontmatter, "accent", slug),
     heroImage: readOptionalStringField(frontmatter, "heroImage"),
     heroAlt: readOptionalStringField(frontmatter, "heroAlt"),
+    images: readOptionalStringArrayField(frontmatter, "images"),
   };
 }
 
@@ -119,15 +133,15 @@ function sortPostsByDate(a: ProjectPostSummary, b: ProjectPostSummary): number {
 }
 
 async function getPostFileNames(): Promise<string[]> {
-  const files = await fs.readdir(POSTS_DIRECTORY);
+  const files = await fs.readdir(PROJECTS_DIRECTORY);
 
   return files
-    .filter((fileName) => fileName.endsWith(POST_EXTENSION))
+    .filter((fileName) => fileName.endsWith(PROJECT_EXTENSION))
     .sort((a, b) => a.localeCompare(b));
 }
 
 async function readPostSource(slug: string): Promise<string | null> {
-  const filePath = path.join(POSTS_DIRECTORY, `${slug}${POST_EXTENSION}`);
+  const filePath = path.join(PROJECTS_DIRECTORY, `${slug}${PROJECT_EXTENSION}`);
 
   try {
     return await fs.readFile(filePath, "utf8");
@@ -179,7 +193,7 @@ export async function getPostSummaries(): Promise<ProjectPostSummary[]> {
   return posts.sort(sortPostsByDate);
 }
 
-export async function getPostSlugs(): Promise<string[]> {
+export async function getProjectSlugs(): Promise<string[]> {
   "use cache";
 
   const posts = await getPostSummaries();
@@ -202,7 +216,9 @@ export async function getProjectCards(): Promise<Project[]> {
   }));
 }
 
-export async function getPostBySlug(slug: string): Promise<ProjectPost | null> {
+export async function getProjectBySlug(
+  slug: string,
+): Promise<ProjectPost | null> {
   "use cache";
 
   if (!isValidSlug(slug)) {

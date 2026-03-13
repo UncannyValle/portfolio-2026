@@ -19,13 +19,13 @@ Single-page portfolio built with **Next.js 16 App Router**, **React 19**, and **
 
 ### Content system
 
-Project case studies are written as Markdown files in `content/posts/*.md` and parsed server-side via `src/lib/posts.ts` (marked `server-only`). Each post has required frontmatter: `title`, `subtitle`, `description`, `publishedAt`, `tags[]`, `color` (hex), `accent` (hex), and optional `heroImage`/`heroAlt`. Use `content/postTemplate.md` as the starting point for new posts.
+Project case studies are written as Markdown files in `content/posts/*.md` and parsed server-side via `src/lib/projects.ts` (marked `server-only`). Each post has required frontmatter: `title`, `subtitle`, `description`, `publishedAt`, `tags[]`, `color` (hex), `accent` (hex), and optional `heroImage`/`heroAlt`. Use `content/postTemplate.md` as the starting point for new posts.
 
 Post slugs must match `[a-z0-9-]+`. Posts are sorted newest-first and statically generated at build time via `generateStaticParams`. The post detail page lives at `/posts/[slug]`.
 
 ### Data flow
 
-- `src/lib/posts.ts` — reads `content/posts/`, parses gray-matter frontmatter, exposes `getProjectCards()`, `getPostBySlug()`, `getPostSummaries()`, and `getPostSlugs()` (all use `"use cache"`)
+- `src/lib/projects.ts` — reads `content/posts/`, parses gray-matter frontmatter, exposes `getProjectCards()`, `getProjectBySlug()`, `getPostSummaries()`, and `getProjectSlugs()` (all use `"use cache"`)
 - `src/lib/data.ts` — static `SKILLS` and `CAREERS` arrays; edit directly to update those sections
 - `src/lib/constants.ts` — `NAV_LINKS`, `SOCIAL_LINKS`, `CONTACT_EMAIL`, `SITE_METADATA`
 - `src/types/index.ts` — shared TypeScript interfaces (`Project`, `ProjectPost`, `Skill`, `Career`)

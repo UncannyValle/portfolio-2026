@@ -8,11 +8,12 @@ import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import rehypeSlug from "rehype-slug";
 import remarkGfm from "remark-gfm";
 
+import { ProjectImageCarousel } from "@/components/ProjectImageCarousel";
 import { Badge } from "@/components/ui/Badge";
-import { getPostBySlug, getPostSlugs } from "@/lib/posts";
+import { getProjectBySlug, getProjectSlugs } from "@/lib/projects";
 import { cn } from "@/lib/utils";
 
-interface PostPageProps {
+interface ProjectsPageProps {
   params: Promise<{ slug: string }>;
 }
 
@@ -34,7 +35,7 @@ const articleContentClassName = cn(
   "[&_strong]:font-semibold [&_strong]:text-foreground",
 );
 
-function formatPostDate(dateValue: string): string {
+function formatProjectDate(dateValue: string): string {
   const timestamp = Date.parse(dateValue);
 
   if (Number.isNaN(timestamp)) {
@@ -49,39 +50,39 @@ function formatPostDate(dateValue: string): string {
 }
 
 export async function generateStaticParams() {
-  const slugs = await getPostSlugs();
+  const slugs = await getProjectSlugs();
   return slugs.map((slug) => ({ slug }));
 }
 
 export async function generateMetadata({
   params,
-}: PostPageProps): Promise<Metadata> {
+}: ProjectsPageProps): Promise<Metadata> {
   const { slug } = await params;
-  const post = await getPostBySlug(slug);
+  const project = await getProjectBySlug(slug);
 
-  if (!post) {
+  if (!project) {
     return {
       title: "Case Study Not Found",
     };
   }
 
   return {
-    title: `${post.title} | Case Study`,
-    description: post.description,
-    keywords: post.tags,
+    title: `${project.title} | Case Study`,
+    description: project.description,
+    keywords: project.tags,
     openGraph: {
       type: "article",
-      title: post.title,
-      description: post.description,
+      title: project.title,
+      description: project.description,
     },
   };
 }
 
-export default async function PostPage({ params }: PostPageProps) {
+export default async function ProjectPage({ params }: ProjectsPageProps) {
   const { slug } = await params;
-  const post = await getPostBySlug(slug);
+  const project = await getProjectBySlug(slug);
 
-  if (!post) {
+  if (!project) {
     notFound();
   }
 
@@ -100,34 +101,34 @@ export default async function PostPage({ params }: PostPageProps) {
           <span
             className="inline-flex rounded-full px-3 py-1 font-mono text-[10px] tracking-[0.14em] uppercase"
             style={{
-              backgroundColor: `${post.color}22`,
-              color: post.accent,
+              backgroundColor: `${project.color}22`,
+              color: project.accent,
             }}
           >
-            {post.subtitle}
+            {project.subtitle}
           </span>
 
           <h1 className="font-display text-[clamp(2.2rem,6vw,4.1rem)] leading-[0.98] font-extrabold tracking-tight">
-            {post.title}
+            {project.title}
           </h1>
 
           <p className="max-w-2xl text-lg leading-relaxed text-muted-foreground">
-            {post.description}
+            {project.description}
           </p>
 
           <div className="flex flex-wrap items-center gap-4 text-sm text-muted-foreground">
             <span className="inline-flex items-center gap-2">
               <CalendarDays className="size-4" />
-              {formatPostDate(post.publishedAt)}
+              {formatProjectDate(project.publishedAt)}
             </span>
             <span className="inline-flex items-center gap-2">
               <Clock3 className="size-4" />
-              {post.readingTimeMinutes} min read
+              {project.readingTimeMinutes} min read
             </span>
           </div>
 
           <div className="flex flex-wrap gap-2">
-            {post.tags.map((tag) => (
+            {project.tags.map((tag) => (
               <Badge key={tag} variant="secondary" className="rounded-full">
                 {tag}
               </Badge>
@@ -137,16 +138,16 @@ export default async function PostPage({ params }: PostPageProps) {
           <div
             className="h-px w-full"
             style={{
-              backgroundImage: `linear-gradient(90deg, ${post.color}, ${post.accent}, transparent 90%)`,
+              backgroundImage: `linear-gradient(90deg, ${project.color}, ${project.accent}, transparent 90%)`,
             }}
           />
         </header>
 
-        {post.heroImage ? (
+        {project.heroImage ? (
           <div className="mt-10 overflow-hidden rounded-2xl border border-border/80 bg-card/60">
             <Image
-              src={post.heroImage}
-              alt={post.heroAlt ?? post.title}
+              src={project.heroImage}
+              alt={project.heroAlt ?? project.title}
               width={1600}
               height={900}
               priority
@@ -160,9 +161,17 @@ export default async function PostPage({ params }: PostPageProps) {
             remarkPlugins={[remarkGfm]}
             rehypePlugins={[rehypeSlug, rehypeAutolinkHeadings]}
           >
-            {post.content}
+            {project.content}
           </ReactMarkdown>
         </div>
+
+        {project.images && project.images.length > 0 ? (
+          <ProjectImageCarousel
+            images={project.images}
+            alt={project.title}
+            accent={project.accent}
+          />
+        ) : null}
       </article>
     </main>
   );

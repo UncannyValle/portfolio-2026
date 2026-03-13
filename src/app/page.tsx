@@ -6,7 +6,7 @@ import { Projects } from "@/components/sections/Projects";
 import { Skills } from "@/components/sections/Skills";
 import { Separator } from "@/components/ui/Separator";
 import { CAREERS, SKILLS } from "@/lib/data";
-import { getProjectCards } from "@/lib/posts";
+import { getProjectCards } from "@/lib/projects";
 
 export default async function Home() {
   const projects = await getProjectCards();

@@ -11,6 +11,9 @@ color: "#2563eb"
 accent: "#60a5fa"
 heroImage: /projects/your-slug/hero.webp
 heroAlt: Short accessible description of the hero image
+images:
+  - /projects/your-slug/screenshot-1.webp
+  - /projects/your-slug/screenshot-2.webp
 ---
 
 ## Context

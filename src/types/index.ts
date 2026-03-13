@@ -19,6 +19,7 @@ export interface ProjectPostFrontmatter {
   accent: string;
   heroImage?: string;
   heroAlt?: string;
+  images?: string[];
 }
 
 export interface ProjectPostSummary extends ProjectPostFrontmatter {

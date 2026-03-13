@@ -29,7 +29,7 @@ export function Projects({ projects }: ProjectsProps) {
           {projects.map((project, index) => (
             <Link
               key={project.slug}
-              href={`/posts/${project.slug}`}
+              href={`/projects/${project.slug}`}
               className={cn("block", index === 0 && "md:col-span-2")}
               style={{
                 opacity: isInView ? 1 : 0,
