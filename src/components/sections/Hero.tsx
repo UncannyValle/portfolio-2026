@@ -102,7 +102,13 @@ export function Hero() {
               variant="outline"
               className="rounded-full px-7"
             >
-              <a href={`mailto:${CONTACT_EMAIL}`}>Get in Touch</a>
+              <a
+                target="_blank"
+                rel="noreferrer"
+                href={`mailto:${CONTACT_EMAIL}`}
+              >
+                Get in Touch
+              </a>
             </Button>
           </div>
 
