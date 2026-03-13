@@ -8,6 +8,7 @@ import { SITE_METADATA } from "@/lib/constants";
 import { ThemeProvider } from "@/providers/ThemeProvider";
 
 import "@/app/globals.css";
+import type { ReactNode } from "react";
 
 const outfit = Outfit({
   variable: "--font-outfit",
@@ -32,11 +33,7 @@ export const metadata: Metadata = {
   description: SITE_METADATA.description,
 };
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en" suppressHydrationWarning>
       <body

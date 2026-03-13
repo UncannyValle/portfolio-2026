@@ -79,7 +79,7 @@ export function About() {
                   {card.body}
                 </p>
                 {card.metric ? (
-                  <p className="font-mono text-2xl font-semibold text-[var(--accent)]">
+                  <p className="font-mono text-2xl font-semibold text-accent">
                     {card.metric}
                   </p>
                 ) : null}

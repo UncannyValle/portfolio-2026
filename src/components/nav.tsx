@@ -50,7 +50,7 @@ export function Nav() {
       >
         <Link
           href="/"
-          className="font-mono text-lg font-semibold tracking-tight text-[var(--accent)]"
+          className="font-mono text-lg font-semibold tracking-tight text-accent"
         >
           &lt;JV /&gt;
         </Link>

@@ -4,6 +4,12 @@ import { useEffect, useState } from "react";
 
 import { ScrollIndicator } from "@/components/ScrollIndicator";
 import { Button } from "@/components/ui/Button";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 import { CONTACT_EMAIL, SOCIAL_LINKS } from "@/lib/constants";
 import { cn } from "@/lib/utils";
 
@@ -32,7 +38,7 @@ export function Hero() {
         <div className="max-w-3xl space-y-8">
           <div
             className={cn(
-              "inline-flex items-center gap-2 rounded-full border border-emerald-400/40 bg-emerald-400/10 px-4 py-2 text-xs font-semibold tracking-[0.14em] text-emerald-300 uppercase transition-all duration-700",
+              "inline-flex items-center gap-2 rounded-full border dark:border-emerald-400/40 border-emerald-700 bg-emerald-400/10 px-4 py-2 text-xs font-semibold tracking-[0.14em]  dark:text-emerald-300 uppercase transition-all duration-700",
               loaded ? "translate-y-0 opacity-100" : "translate-y-6 opacity-0",
             )}
           >
@@ -107,18 +113,24 @@ export function Hero() {
             )}
             style={{ transitionDelay: "520ms" }}
           >
-            {SOCIAL_LINKS.map((link) => (
-              <a
-                key={link.label}
-                href={link.href}
-                target="_blank"
-                rel="noreferrer"
-                className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-border bg-card font-mono text-xs text-muted-foreground transition-colors hover:text-foreground"
-                aria-label={link.label}
-              >
-                {link.icon}
-              </a>
-            ))}
+            <TooltipProvider>
+              {SOCIAL_LINKS.map((link) => (
+                <Tooltip key={link.label}>
+                  <TooltipTrigger asChild>
+                    <a
+                      href={link.href}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-border bg-card text-muted-foreground transition-colors hover:text-foreground"
+                      aria-label={link.label}
+                    >
+                      <link.icon size={16} />
+                    </a>
+                  </TooltipTrigger>
+                  <TooltipContent>{link.label}</TooltipContent>
+                </Tooltip>
+              ))}
+            </TooltipProvider>
           </div>
         </div>
       </div>
