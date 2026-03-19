@@ -72,12 +72,9 @@ export function ProjectImageCarousel({
 
       {images.length > 1 ? (
         <div className="flex items-center justify-center gap-2">
-          {images.map((_, i) => (
+          {images.map((src, i) => (
             <button
-              key={`dot-${
-                // biome-ignore lint/suspicious/noArrayIndexKey: index is stable for dots
-                i
-              }`}
+              key={`dot-${src}`}
               type="button"
               onClick={() => setIndex(i)}
               aria-label={`Go to image ${i + 1}`}
