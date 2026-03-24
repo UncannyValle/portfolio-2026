@@ -43,6 +43,11 @@ export function Skills({ skills }: SkillsProps) {
     return skills.filter((skill) => skill.category === activeCategory);
   }, [activeCategory, skills]);
 
+  const maxYears = useMemo(
+    () => Math.max(...skills.map((s) => s.years)),
+    [skills],
+  );
+
   return (
     <section id="skills" ref={ref} className="px-4 py-20 md:py-28">
       <div className="mx-auto max-w-6xl">
@@ -78,7 +83,7 @@ export function Skills({ skills }: SkillsProps) {
                       {skill.name}
                     </p>
                     <p className="font-mono text-xs text-muted-foreground md:text-sm">
-                      {skill.level}%
+                      {skill.years} yr{skill.years !== 1 ? "s" : ""}
                     </p>
                   </div>
 
@@ -89,7 +94,9 @@ export function Skills({ skills }: SkillsProps) {
                         CATEGORY_GRADIENTS[skill.category],
                       )}
                       style={{
-                        width: isInView ? `${skill.level}%` : "0%",
+                        width: isInView
+                          ? `${(skill.years / maxYears) * 100}%`
+                          : "0%",
                         transitionDelay: `${index * 100}ms`,
                       }}
                     />

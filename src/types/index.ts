@@ -33,7 +33,7 @@ export interface ProjectPost extends ProjectPostSummary {
 
 export interface Skill {
   name: string;
-  level: number;
+  years: number;
   category: "frontend" | "backend" | "devops" | "ai";
 }
 

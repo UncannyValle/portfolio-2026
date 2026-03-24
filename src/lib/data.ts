@@ -1,16 +1,16 @@
 import type { Career, Skill } from "@/types";
 
 export const SKILLS: Skill[] = [
-  { name: "React / Next.js", level: 95, category: "frontend" },
-  { name: "TypeScript", level: 92, category: "frontend" },
-  { name: "Tailwind / SCSS", level: 90, category: "frontend" },
-  { name: "Node.js / Express", level: 85, category: "backend" },
-  { name: ".NET 8 / C#", level: 75, category: "backend" },
-  { name: "SQL Server", level: 80, category: "backend" },
-  { name: "GraphQL / REST", level: 88, category: "backend" },
-  { name: "Docker / CI/CD", level: 78, category: "devops" },
-  { name: "OpenAI Integration", level: 82, category: "ai" },
-  { name: "Shopify Storefront", level: 85, category: "frontend" },
+  { name: "React / Next.js", years: 6, category: "frontend" },
+  { name: "TypeScript", years: 5, category: "frontend" },
+  { name: "Tailwind / SCSS", years: 5, category: "frontend" },
+  { name: "Node.js / Express", years: 4, category: "backend" },
+  { name: ".NET 8 / C#", years: 3, category: "backend" },
+  { name: "SQL Server", years: 4, category: "backend" },
+  { name: "GraphQL / REST", years: 4, category: "backend" },
+  { name: "Docker / CI/CD", years: 3, category: "devops" },
+  { name: "OpenAI Integration", years: 2, category: "ai" },
+  { name: "Shopify Storefront", years: 2, category: "frontend" },
 ];
 
 export const CAREERS: Career[] = [
